@@ -8,7 +8,7 @@ var config = {
     port: 3000,
     secretKey: 'ginger_cat',
     db: {
-      billing: {
+      main: {
         host: 'localhost',
         user: 'webbank21',
         password: 'jgwa1Afdsaf!B',

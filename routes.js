@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var fs = require('fs');
 var controllers = [];
 
 module.exports = function(passport) {
@@ -11,10 +10,6 @@ module.exports = function(passport) {
   router.get("/todos", passport.authenticate('jwt', {session: false}), function(req, res) {
     res.json({message: "Success! You can not see this without a token"});
   });
-
-/*  router.get("/", function(req, res) {
-    res.json({message: "Express is up! public "});
-  });*/
 
   return router;
 };
