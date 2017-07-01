@@ -7,6 +7,10 @@ module.exports = function(passport) {
     require('./controllers/authenticationController').authenticate(req, res, next);
   });
 
+  router.post("/signup", function(req, res, next) {
+    require('./controllers/userController').create(req, res, next);
+  });
+
   router.get("/todos", passport.authenticate('jwt', {session: false}), function(req, res) {
     res.json({message: "Success! You can not see this without a token"});
   });
