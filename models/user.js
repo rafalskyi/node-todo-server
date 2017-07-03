@@ -19,7 +19,7 @@ module.exports = {
 
   create: function(param, done) {
     db.main.getConnection(function (err, connection) {
-      if (err) return tieUserAndAccount(err);
+      if (err) return done(err);
       var created = new Date();
       var query = 'INSERT INTO users SET ?';
       var user = {
