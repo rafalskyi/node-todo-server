@@ -62,6 +62,19 @@ module.exports = {
     });
   },
 
+  update: function (fields, conditions, done) {
+    db.main.getConnection(function (err, connection) {
+      if (err) return done(err);
+      if(fields.id) delete(fields.id);
+
+      var updated = new Date();
+      fields = _.extend(fields, {updated_at: updated});
+
+      connection.update('todos', fields, conditions, done);
+      connection.release();
+    });
+  },
+
   delete: function(id, done) {
     db.main.getConnection(function (err, connection) {
       if (err) return done(err);

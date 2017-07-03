@@ -18,6 +18,9 @@ module.exports = function(passport) {
   router.post("/todos", passport.authenticate('jwt', {session: false}), function(req, res, next) {
     require('./controllers/todoController').create(req, res, next);
   });
+  router.patch("/todos/:id", passport.authenticate('jwt', {session: false}), function(req, res, next) {
+    require('./controllers/todoController').update(req, res, next);
+  });
   router.delete("/todos/:id", passport.authenticate('jwt', {session: false}), function(req, res, next) {
     require('./controllers/todoController').delete(req, res, next);
   });

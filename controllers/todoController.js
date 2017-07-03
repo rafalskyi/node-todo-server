@@ -21,6 +21,14 @@ module.exports = {
     });
   },
 
+  'update': function (req, res, done) {
+    todoModel.update({title: req.body.title}, {id:req.params.id}, function(err, result) {
+      if (err) return done(err);
+
+      res.json(result);
+    });
+  },
+
   'delete': function(req, res, done) {
     todoModel.delete(req.params.id, function(err, result) {
       if (err) return done(err);
